@@ -9,6 +9,7 @@ const AddNote = () => {
   const handleClick = (e) => {
     e.preventDefault()
     addNote(note)
+    setNote({title: '', description: '', tag: ''})
   }
 
   const onChange = (event) => {
@@ -20,20 +21,21 @@ const AddNote = () => {
       <h3>Add a Note</h3>
       <form className="my-3">
         <div className="form-group">
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Title </label>
           <input
             type="text"
             className="form-control"
             id="title"
             name="title"
+            value={note.title}
             aria-describedby="emailHelp"
             placeholder="Enter Title"
             onChange={onChange}
+            required
+            minLength={3}
           />
-          <small id="titlelength" className="form-text text-muted">
-            Minimum length of title must be 3 characters
-          </small>
         </div>
+
         <div className="form-group">
           <label htmlFor="description">Description</label>
           <input
@@ -41,13 +43,11 @@ const AddNote = () => {
             className="form-control"
             id="description"
             name="description"
+            value={note.description}
             placeholder="Enter Description"
             onChange={onChange}
           />
         </div>
-        <small id="descriptionlength" className="form-text text-muted">
-            Minimum length of description must be 3 characters
-          </small>
         <div className="form-group">
           <label htmlFor="tag">Tag</label>
           <input
@@ -55,12 +55,13 @@ const AddNote = () => {
             className="form-control"
             id="tag"
             name="tag"
+            value={note.tag}
             placeholder="Enter Tag"
             onChange={onChange}
           />
         </div>
-        
-        <button onClick={handleClick}type="submit" className="btn btn-success mt-3">
+        {/* {note.title.length < 3 ? <p className="text-danger">Minimum title length must be 3 characters</p>:null} */}
+        <button disabled={note.title.length < 3} onClick={handleClick}type="submit" className="btn btn-success mt-3">
           Add Note
         </button>
       </form>
