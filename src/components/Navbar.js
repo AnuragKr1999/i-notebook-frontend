@@ -1,15 +1,22 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
 
   let location = useLocation()
+  let navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+    props.showAlert('Logged out successfully', 'success')
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          i-Notebook
+        <i class="fa-solid fa-book" style={{color: "#006cfa"}}></i> i-Notebook
         </Link>
         <button
           className="navbar-toggler"
@@ -26,19 +33,22 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className={`nav-link ${location.pathname === '/'? 'active':''}`} aria-current="page" to="/">
-                Home
+              <i class="fa-solid fa-house"></i> Home
               </Link>
             </li>
             <li className="nav-item">
               <Link className={`nav-link ${location.pathname === '/about'? 'active':''}`} to="/about">
-                About
+              <i class="fa-solid fa-circle-info"></i> About
               </Link>
             </li>
           </ul>
+          {!localStorage.getItem('token')?
           <form className="d-flex" role="search">
           <Link className="btn btn-info mx-1" to="/login" role="button">Login</Link>
           <Link className="btn btn-info mx-1" to="/signup" role="button">Signup</Link>
-          </form>
+          </form>:
+          <button onClick={handleLogout} className="btn btn-danger">Logout</button>
+          }
         </div>
       </div>
     </nav>

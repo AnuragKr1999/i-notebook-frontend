@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
+import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
   const {showAlert} = props
@@ -14,9 +15,16 @@ const Notes = (props) => {
     tag: "",
   });
 
+  let navigate = useNavigate()
+
   useEffect(() => {
-    getNotes();
+    // If there is token then redirect to home
+    if(localStorage.getItem('token')) {
+      getNotes();
     // eslint-disable-next-line
+    } else {
+      navigate('/login')
+    }
   }, []);
 
   const ref = useRef(null);

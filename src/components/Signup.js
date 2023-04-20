@@ -39,7 +39,7 @@ const Signup = (props) => {
   return (
     <form onSubmit={handleOnSubmitSignup}>
       <div className="form-group">
-        <h1>Signup</h1>
+        <h1>Create a free account to start using i-Notebook</h1>
         <label htmlFor="email">Name</label>
         <input
           type="text"

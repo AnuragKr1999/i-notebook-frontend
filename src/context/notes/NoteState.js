@@ -17,7 +17,7 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQxY2FkNjNlMWEwNDAxNGM1ZDE0NGQxIn0sImlhdCI6MTY3OTc2MjQ3N30.kPS2H2lEq00drWXNJkNrwDBV8Sla0acsA72PZcWPFu4"
+        "auth-token": localStorage.getItem("token")
       },
     
       body: JSON.stringify({title, description, tag}), 
@@ -35,7 +35,7 @@ const NoteState = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQxY2FkNjNlMWEwNDAxNGM1ZDE0NGQxIn0sImlhdCI6MTY3OTc2MjQ3N30.kPS2H2lEq00drWXNJkNrwDBV8Sla0acsA72PZcWPFu4"
+        "auth-token": localStorage.getItem("token")
       },
     });
     const allNotes = await response.json();
@@ -50,10 +50,11 @@ const NoteState = (props) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQxY2FkNjNlMWEwNDAxNGM1ZDE0NGQxIn0sImlhdCI6MTY3OTc2MjQ3N30.kPS2H2lEq00drWXNJkNrwDBV8Sla0acsA72PZcWPFu4"
+        "auth-token": localStorage.getItem("token")
       },
     });
     const json = await response.json()
+    console.log(json)
     const newNotes = notes.filter((note) => note._id !== id);
     setNotes(newNotes);
   };
@@ -65,13 +66,14 @@ const NoteState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQxY2FkNjNlMWEwNDAxNGM1ZDE0NGQxIn0sImlhdCI6MTY3OTc2MjQ3N30.kPS2H2lEq00drWXNJkNrwDBV8Sla0acsA72PZcWPFu4"
+        "auth-token": localStorage.getItem("token")
       },
     
       body: JSON.stringify({title, description, tag}), 
     });
     const json = await response.json();
-    
+    console.log(json)
+
     let newNotes = JSON.parse(JSON.stringify(notes))
     // update notes in the front-end
     for (let index = 0; index < newNotes.length; index++) {
