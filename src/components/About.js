@@ -48,7 +48,7 @@ export default function About() {
             <div class="accordion-body">
         
                 This application is made by Anurag Kumar.<br/>
-                <i class="fa-brands fa-github fa-lg"></i> <a href="https://github.com/AnuragKr1999/" target="_blank" rel="noopener noreferrer">Github</a><br/>
+                <i class="fa-brands fa-github fa-lg"></i> <a href="https://github.com/anuragkr22/" target="_blank" rel="noopener noreferrer">Github</a><br/>
                 <i class="fa-brands fa-linkedin" style={{color: "#1080d5"}}></i> <a href="https://www.linkedin.com/in/anurag-kumar-751315243/" target="_blank" rel="noopener noreferrer">Linkedin</a>
                 <br/>Application is made using: <i class="fa-brands fa-react fa-spin fa-lg" style={{color: "#1ba8ee"}}></i> <a href="https://react.dev/blog/2023/03/16/introducing-react-dev" target="_blank" rel="noopener noreferrer">MERN Stack</a> + <i class="fa-brands fa-bootstrap" style={{color: "#9113be"}}></i> <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" rel="noopener noreferrer">Bootstrap</a>
             </div>
